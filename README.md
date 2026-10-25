@@ -1,7 +1,10 @@
-# GoodJob CRM 外贸客户管理软件原型交付
-如果这个项目对你有帮助，欢迎自愿打赏支持：
-<img width="200" height="300" alt="cc8e0570ef598ec305bf7df5b98840d0" src="https://github.com/user-attachments/assets/7eb404f7-8bee-4c59-84aa-09d6b9335c59" />
+# GoodJob 外贸 CRM
 
+面向外贸销售团队的网页版客户管理软件（前后端分离，MySQL 本地化存储）。
+
+> - 本仓库为 [huangguojia/GoodJob](https://github.com/huangguojia/GoodJob) 的维护分支（fork），自有核心代码沿用 Apache-2.0。
+> - 当前生产部署：`https://crm.ysec.cn`（AI 助手：Yves）。
+> - 部署、升级与日常运维见《[部署运维手册](./docs/GoodJobCRM部署运维手册.md)》。
 
 ## WhatsApp 集成
 
@@ -27,6 +30,24 @@ npm run dev
 固定 `SESSION_MASTER_KEY`，并在 CRM 鉴权网关后发布。当前插件是单租户、单实例、私网部署边界。
 
 第三方组件归属见 `whatsapp-plugin/THIRD_PARTY_NOTICES.md`。
+
+## 部署与运维
+
+生产环境使用 Docker Compose 部署（MySQL 8.4 + backend + communication + gateway 四容器），
+由 1Panel（OpenResty）反向代理并通过 Cloudflare 提供 HTTPS。发布走 GitHub 部署流：
+本地拉取上游同步 → 审核合并 → 本地调试 → 上传 GitHub → 服务器拉取远程并重新构建。
+
+```bash
+# 服务器侧拉取远程最新源码并重建（详细步骤见《部署运维手册》）
+cd /opt/goodjobcrm-source
+sudo git pull origin master
+sudo GOODJOB_RELEASE_ID=$(date +manual-%Y%m%d%H%M%S) docker compose --project-name goodjobcrm \
+  --env-file /opt/goodjobcrm/shared/deploy.env \
+  -f deploy/docker-compose/compose.yml up -d --build
+```
+
+完整的上线前检查、配置项清单、备份恢复与故障排查见
+《[部署运维手册](./docs/GoodJobCRM部署运维手册.md)》。
 
 ## 1. 产品定位
 
@@ -532,6 +553,8 @@ Swagger 文档默认启用，但必须先使用管理员或超级管理员账号
 
 - `frontend/index.html`：Vite 应用页面骨架，业务数据由后端接口加载。
 - `README.md`：产品、功能辩论、架构与页面说明。
+- `CHANGELOG.md`：版本变更记录（Keep a Changelog 格式）。
+- `docs/GoodJobCRM部署运维手册.md`：部署、升级、备份与故障排查手册。
 - `WEBSITE_LEAD_INGRESS.md`：官网到 CRM 的 HMAC 签名、重放保护与无中断密钥轮换方案。
 
 ## 10. 开源许可证
