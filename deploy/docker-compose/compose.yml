@@ -2,6 +2,11 @@ services:
   mysql:
     image: mysql:8.4.6
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -37,6 +42,11 @@ services:
     image: postgres:16.9-alpine
     profiles: ["legacy-migration"]
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     environment:
       POSTGRES_DB: ${POSTGRES_DATABASE:-goodjobcrm_whatsapp_prod}
       POSTGRES_USER: ${POSTGRES_USER:-goodjobcrm_whatsapp_app}
@@ -73,6 +83,11 @@ services:
       context: ../..
       dockerfile: deploy/docker-compose/Dockerfile.backend
     restart: "no"
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     environment: &backend_environment
       NODE_ENV: production
       CRM_STORE: mysql
@@ -140,6 +155,11 @@ services:
       context: ../..
       dockerfile: deploy/docker-compose/Dockerfile.communication
     restart: "no"
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     environment: &communication_environment
       NODE_ENV: production
       HOST: 0.0.0.0
@@ -182,6 +202,11 @@ services:
   backend:
     image: ${GOODJOB_BACKEND_IMAGE:-goodjobcrm-backend}:${GOODJOB_RELEASE_ID}
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     environment: *backend_environment
     secrets: *backend_secrets
     networks:
@@ -209,6 +234,11 @@ services:
   communication:
     image: ${GOODJOB_COMMUNICATION_IMAGE:-goodjobcrm-communication}:${GOODJOB_RELEASE_ID}
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     environment: *communication_environment
     secrets:
       - mysql_password
@@ -240,6 +270,11 @@ services:
       context: ../..
       dockerfile: deploy/docker-compose/Dockerfile.gateway
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
     ports:
       - "127.0.0.1:${GOODJOB_HTTP_PORT:-4188}:8080"
     networks:
