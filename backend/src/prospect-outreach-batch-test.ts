@@ -48,7 +48,7 @@ function fakeWritingRuntime(options: {
   maxSteps?: number;
 }): OutreachWritingRuntime {
   const sender = {
-    name: "Kevin Lau",
+    name: "Yves Lau",
     company: "Hong Kong New Longtec Industrial Limited",
     products: "industrial weighing scales and load cells",
     website: "https://www.newlongtec.com",

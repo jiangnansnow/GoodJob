@@ -91,7 +91,7 @@ test.describe("customer WhatsApp and public pool", () => {
     await apiFromPage(page, "/api/customers", "POST", {
       company,
       country: "China",
-      contact: "Kevin +8618163201984",
+      contact: "Yves +8618163201984",
       // 列表里的 WhatsApp 入口只认 whatsapp 字段（不再从 contact 文本里猜号码），
       // 缺了它按钮就是 disabled，点不动 —— 2026-10-14 同步。
       whatsapp: "+8618163201984",

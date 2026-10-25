@@ -45,7 +45,7 @@ const ALL_STAGES: OutreachJourneyStageKey[] = [
 ];
 
 const SENDER = {
-  name: "Kevin Lau",
+  name: "Yves Lau",
   company: "Hong Kong New Longtec Industrial Limited",
   products: "industrial weighing scales and load cells",
   website: "https://www.newlongtec.com",

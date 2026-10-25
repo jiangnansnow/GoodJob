@@ -179,7 +179,7 @@ const identityRun = await createAgentPlan(store, actor, "你叫什么名字？",
 });
 assert.equal(identityRun.status, "completed");
 assert.equal(identityRun.steps.length, 0);
-assert.match(identityRun.summary, /Kevin/u);
+assert.match(identityRun.summary, /Yves/u);
 
 const capabilityRun = await createAgentPlan(store, actor, "商机能干什么", {
   conversationId: "agc_deal_capabilities",
@@ -277,7 +277,7 @@ try {
   conversationReplyPayload = {
     answer: "客户健康度用于综合反映资料完整度、跟进活跃度和商机进展，帮助业务员确定维护优先级。",
     confidence: 0.94,
-    sources: ["Kevin 系统咨询与业务答疑", "客户管理与客户全景"]
+    sources: ["Yves 系统咨询与业务答疑", "客户管理与客户全景"]
   };
   conversationReviewPayload = conversationReplyPayload;
   const jsonReplyRun = await createAgentPlan(modelStore, modelActor, "客户健康度是什么意思", {
@@ -295,7 +295,7 @@ try {
   conversationReviewPayload = {
     answer: "进入客户页面后点击新建客户，填写公司名称即可建立档案；国家、联系人、联系方式、分级和健康度可以同时维护，也可以创建后再补充。保存成功后可在客户全景继续查看相关商机、跟进记录和联系方式。",
     confidence: 0.95,
-    sources: ["Kevin 系统咨询与业务答疑", "客户管理与客户全景"]
+    sources: ["Yves 系统咨询与业务答疑", "客户管理与客户全景"]
   };
   const reviewedReplyRun = await createAgentPlan(modelStore, modelActor, "如何创建一个客户", {
     conversationId: "agc_consultation_model_review"

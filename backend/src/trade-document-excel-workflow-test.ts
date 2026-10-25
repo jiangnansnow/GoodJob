@@ -327,7 +327,7 @@ try {
   assert.equal(invalidPlacementResponse.status, 400, "out-of-bounds asset placement must be rejected");
   const signatureResponse = await request("/api/document-assets/signatures", admin, {
     method: "POST",
-    body: JSON.stringify({ name: "Kevin Signature", signerName: "Kevin Huang", signerTitle: "Export Manager", imageUrl: signatureUrl, isDefault: true, enabled: true })
+    body: JSON.stringify({ name: "Yves Signature", signerName: "Yves Huang", signerTitle: "Export Manager", imageUrl: signatureUrl, isDefault: true, enabled: true })
   });
   assert.equal(signatureResponse.status, 200);
   const signature = (await signatureResponse.json()).asset;
@@ -388,7 +388,7 @@ try {
   assert.deepEqual(selectedDocument.letterheadSnapshot?.logoPlacement, letterhead.logoPlacement);
   assert.equal(selectedDocument.stampSnapshot?.imageUrl, stampUrl);
   assert.deepEqual(selectedDocument.stampSnapshot?.placement, stamp.placement);
-  assert.equal(selectedDocument.signatureSnapshot?.signerName, "Kevin Huang");
+  assert.equal(selectedDocument.signatureSnapshot?.signerName, "Yves Huang");
   assert.equal(selectedDocument.signatureSnapshot?.imageUrl, signatureUrl);
 
   const updateStampPlacement = await request("/api/document-assets/stamps", admin, {

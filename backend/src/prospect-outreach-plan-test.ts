@@ -246,7 +246,7 @@ async function main() {
     [stageFresh.id]: "not_contacted"
   };
   const stageWriting: OutreachWritingRuntime = {
-    sender: () => ({ name: "Kevin Lau", company: "Hong Kong New Longtec", products: "scales and load cells", website: "", signature: "" }),
+    sender: () => ({ name: "Yves Lau", company: "Hong Kong New Longtec", products: "scales and load cells", website: "", signature: "" }),
     async resolve(_actor, target) {
       return {
         stageKey: (stageByEntity[target.entityId] || "not_contacted") as never,

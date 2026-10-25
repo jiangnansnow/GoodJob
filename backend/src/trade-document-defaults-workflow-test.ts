@@ -137,7 +137,7 @@ try {
   store.documentLetterheads.push({
     id: "letterhead_defaults_europe", teamId: "europe", name: "Europe HQ", companyName: "Configured Export Limited",
     address: "88 Harbour Road, Hong Kong", phone: "+852 2000 1000", email: "docs@example.test", website: "https://example.test",
-    bankInfo: "CONFIGURED BANK", contact: "Kevin Huang", taxNo: "HK-TAX-8899", logoUrl: "",
+    bankInfo: "CONFIGURED BANK", contact: "Yves Huang", taxNo: "HK-TAX-8899", logoUrl: "",
     matchCountries: [], matchCurrencies: [], matchDocumentTypes: [], matchPriority: 0,
     stampId: "stamp_defaults_europe", signatureId: "signature_defaults_europe",
     isDefault: true, enabled: true, updatedBy: "u_admin", updatedAt: now
@@ -163,7 +163,7 @@ try {
     isDefault: true, enabled: true, updatedBy: "u_admin", updatedAt: now
   });
   store.documentSignatures.push({
-    id: "signature_defaults_europe", teamId: "europe", name: "Kevin signature", signerName: "Kevin Huang", signerTitle: "Export Manager",
+    id: "signature_defaults_europe", teamId: "europe", name: "Yves signature", signerName: "Yves Huang", signerTitle: "Export Manager",
     imageUrl: "/uploads/defaults-signature-v1.png", isDefault: true, enabled: true, updatedBy: "u_admin", updatedAt: now
   });
   store.documentLetterheads.push({
@@ -189,7 +189,7 @@ try {
     seller: "Configured Export Limited",
     brandMarkText: "GX",
     sellerAddress: "88 Harbour Road, Hong Kong",
-    sellerContact: "Kevin Huang",
+    sellerContact: "Yves Huang",
     sellerPhone: "+852 2000 1000",
     sellerEmail: "docs@example.test",
     sellerWebsite: "https://example.test",
@@ -259,7 +259,7 @@ try {
   assert.equal(manualDocument.validityDate, "2026-09-12");
   assert.equal(manualDocument.letterheadSnapshot?.companyName, "Configured Export Limited");
   assert.equal(manualDocument.stampSnapshot?.name, "Export Stamp");
-  assert.equal(manualDocument.signatureSnapshot?.signerName, "Kevin Huang");
+  assert.equal(manualDocument.signatureSnapshot?.signerName, "Yves Huang");
   assert.equal(manualDocument.includeProductImages, true);
 
   const dealResponse = await request("/api/trade-documents", sales, {
@@ -352,8 +352,8 @@ try {
     method: "POST",
     body: JSON.stringify({
       id: "signature_defaults_europe",
-      name: "Kevin signature V2",
-      signerName: "Kevin Huang V2",
+      name: "Yves signature V2",
+      signerName: "Yves Huang V2",
       signerTitle: "General Manager",
       imageUrl: "/uploads/defaults-signature-v2.png",
       isDefault: true,
@@ -362,7 +362,7 @@ try {
   });
   assert.equal(updatedSignature.status, 200);
   assert.equal(manualDocument.seller, "Configured Export Limited", "profile changes must not overwrite an existing document");
-  assert.equal(manualDocument.signatureSnapshot?.signerName, "Kevin Huang", "asset changes must not overwrite document snapshots");
+  assert.equal(manualDocument.signatureSnapshot?.signerName, "Yves Huang", "asset changes must not overwrite document snapshots");
   assert.equal(manualDocument.signatureSnapshot?.imageUrl, "/uploads/defaults-signature-v1.png");
 
   console.log(JSON.stringify({

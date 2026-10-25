@@ -160,6 +160,7 @@ services:
       WHATSAPP_OFFICIAL_ONLY: "true"
       AUTO_MIGRATE: "false"
       ALLOW_PRIVATE_AI_ENDPOINTS: "false"
+      CRM_BASE_URL: http://backend:4188
     secrets: &communication_secrets
       - mysql_password
       - postgres_password

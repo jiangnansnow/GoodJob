@@ -46,11 +46,11 @@ function baseInput(stageKey: OutreachJourneyStageKey) {
   return {
     stageKey,
     sender: {
-      name: "Kevin",
+      name: "Yves",
       company: "Zhuhai Changlu Industrial Automatic Control System Co., Ltd.",
       products: "industrial weighing and batching control systems",
       website: "https://www.longtec.com",
-      signature: "Best regards,\nKevin"
+      signature: "Best regards,\nYves"
     },
     recipient: {
       company: "Tanaka Scale Vietnam Co., Ltd",
@@ -215,14 +215,14 @@ function main() {
 
     // 落款：属于"按我的身份写信"的一部分，模板必带；AI 漏写时由 ensureDevelopmentEmailSignature 兜底
     const signedFallback = buildDevelopmentEmailFallback(assembleDevelopmentEmailBrief(baseInput("not_contacted")));
-    check(signedFallback.body.includes("Best regards,\nKevin"), "兜底模板正文必须带配置的落款");
+    check(signedFallback.body.includes("Best regards,\nYves"), "兜底模板正文必须带配置的落款");
     check(
-      ensureDevelopmentEmailSignature("Hello there.\n\nBest regards,\nKevin", "Best regards,\nKevin") === "Hello there.\n\nBest regards,\nKevin",
-      "已有落款时不能重复追加"
+      ensureDevelopmentEmailSignature("Hello there.\n\nBest regards,\nYves", "Best regards,\nYves") === "Hello there.\n\nBest regards,\nYves",
+      "已有签名不重复追加"
     );
     check(
-      ensureDevelopmentEmailSignature("Hello there.", "Best regards,\nKevin").endsWith("Best regards,\nKevin"),
-      "AI 漏写落款时必须补上"
+      ensureDevelopmentEmailSignature("Hello there.", "Best regards,\nYves").endsWith("Best regards,\nYves"),
+      "缺少签名时追加"
     );
     check(buildDevelopmentEmailPrompt(assembleDevelopmentEmailBrief(baseInput("not_contacted")), {}).includes("Best regards"), "提示词必须把落款交给模型");
     check(
