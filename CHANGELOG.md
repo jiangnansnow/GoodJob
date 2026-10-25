@@ -1,8 +1,13 @@
 # Changelog
 
-本文件记录 GoodJob 外贸 CRM 维护分支的重要变更，格式遵循
-[Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循
+本文件记录 GoodJob 外贸 CRM 维护分支的重要变更，格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，版本号遵循
 [语义化版本](https://semver.org/lang/zh-CN/)（MAJOR.MINOR.PATCH）。
+
+## [Unreleased]
+
+### Added
+
+- 全部容器日志轮转：json-file 单文件 50m、保留 3 份，防止磁盘被容器日志写满。
 
 ## [0.1.0] - 2026-10-25
 
