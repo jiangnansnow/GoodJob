@@ -34,3 +34,6 @@ coverage/
 # OS metadata and full database exports
 .DS_Store
 *.full.sql
+
+# 部署与账号凭据运维文档（含服务器账号、邮箱、角色等敏感信息，仅本地/服务器保留，不入库）
+docs/凭据运维/

@@ -18,7 +18,7 @@
 - 生产部署：Docker Compose 四容器（mysql / backend / communication / gateway），
   1Panel（OpenResty）反向代理 + Cloudflare HTTPS（`https://crm.ysec.cn`）。
 - 本地镜像构建模式（`GOODJOB_IMAGE_MODE=local`），不依赖上游 ACR 镜像。
-- 部署运维手册《GoodJobCRM部署运维手册.md》，含上线前检查、备份恢复与故障排查。
+- 部署运维手册《GoodJobCRM部署运维手册.md》（存于 docs/凭据运维/，含账号凭据，不入库）。
 - GitHub 部署流：本地同步上游 → 审核合并 → 调试 → 推送 GitHub → 服务器拉取重建。
 
 ### Changed

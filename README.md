@@ -4,7 +4,7 @@
 
 > - 本仓库为 [huangguojia/GoodJob](https://github.com/huangguojia/GoodJob) 的维护分支（fork），自有核心代码沿用 Apache-2.0。
 > - 当前生产部署：`https://crm.ysec.cn`（AI 助手：Yves）。
-> - 部署、升级与日常运维见《[部署运维手册](./docs/GoodJobCRM部署运维手册.md)》。
+> - 部署、升级与日常运维见《部署运维手册》（含账号凭据，仅保存在服务器与本地，不入库）。
 
 ## WhatsApp 集成
 
@@ -38,7 +38,7 @@ npm run dev
 本地拉取上游同步 → 审核合并 → 本地调试 → 上传 GitHub → 服务器拉取远程并重新构建。
 
 ```bash
-# 服务器侧拉取远程最新源码并重建（详细步骤见《部署运维手册》）
+# 服务器侧拉取远程最新源码并重建（详细步骤见服务器侧《部署运维手册》）
 cd /opt/goodjobcrm-source
 sudo git pull origin master
 sudo GOODJOB_RELEASE_ID=$(date +manual-%Y%m%d%H%M%S) docker compose --project-name goodjobcrm \
@@ -46,8 +46,7 @@ sudo GOODJOB_RELEASE_ID=$(date +manual-%Y%m%d%H%M%S) docker compose --project-na
   -f deploy/docker-compose/compose.yml up -d --build
 ```
 
-完整的上线前检查、配置项清单、备份恢复与故障排查见
-《[部署运维手册](./docs/GoodJobCRM部署运维手册.md)》。
+完整的上线前检查、配置项清单、备份恢复与故障排查见服务器侧《部署运维手册》（仅本地与服务器保存）。
 
 ## 1. 产品定位
 
@@ -554,7 +553,7 @@ Swagger 文档默认启用，但必须先使用管理员或超级管理员账号
 - `frontend/index.html`：Vite 应用页面骨架，业务数据由后端接口加载。
 - `README.md`：产品、功能辩论、架构与页面说明。
 - `CHANGELOG.md`：版本变更记录（Keep a Changelog 格式）。
-- `docs/GoodJobCRM部署运维手册.md`：部署、升级、备份与故障排查手册。
+- `docs/凭据运维/`（不入库）：部署运维手册（含服务器账号、邮箱、角色等凭据运维信息）。
 - `WEBSITE_LEAD_INGRESS.md`：官网到 CRM 的 HMAC 签名、重放保护与无中断密钥轮换方案。
 
 ## 10. 开源许可证
